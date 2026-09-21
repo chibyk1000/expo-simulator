@@ -26,7 +26,7 @@ jobs:
           node-version: 22
 
       - name: Set version from tag
-        run: node scripts/set-version.js "${GITHUB_REF_NAME}"
+        run: node scripts/set-version.js "${{ github.ref_name }}"
 
       - name: Build binary
         run: cargo build --release -p simulator-desktop
@@ -36,7 +36,7 @@ jobs:
         run: |
           BIN=target/release/expo-sim
           [ "${{ runner.os }}" = "Windows" ] && BIN=target/release/expo-sim.exe
-          node scripts/package-platform.js "${{ matrix.key }}" "$BIN" "${GITHUB_REF_NAME#v}"
+          node scripts/package-platform.js "${{ matrix.key }}" "$BIN" "${{ github.ref_name }}"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -82,7 +82,7 @@ jobs:
 
       - name: Build and publish expo-sim
         run: |
-          node scripts/set-version.js "${GITHUB_REF_NAME}"
+          node scripts/set-version.js "${{ github.ref_name }}"
           pnpm install --frozen-lockfile=false
           pnpm --filter expo-sim run build
           cd packages/cli
@@ -122,8 +122,8 @@ jobs:
       - name: Update version files and changelog
         run: |
           git fetch --tags
-          node scripts/set-version.js "${GITHUB_REF_NAME}"
-          node scripts/update-changelog.js "${GITHUB_REF_NAME}"
+          node scripts/set-version.js "${{ github.ref_name }}"
+          node scripts/update-changelog.js "${{ github.ref_name }}"
           cargo update --workspace
 
       - name: Commit to main

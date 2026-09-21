@@ -12,7 +12,8 @@ const TARGETS = {
 };
 
 const [key, binary, version] = process.argv.slice(2);
-if (!TARGETS[key] || !binary || !version) {
+const normalizedVersion = (version || '').replace(/^v/, '');
+if (!TARGETS[key] || !binary || !normalizedVersion) {
   console.error(`Usage: package-platform.js <${Object.keys(TARGETS).join('|')}> <binary> <version>`);
   process.exit(1);
 }
@@ -31,7 +32,7 @@ fs.writeFileSync(
   JSON.stringify(
     {
       name: `@expo-sim/${key}`,
-      version,
+      version: normalizedVersion,
       description: `Native ${key} binary for expo-sim`,
       license: 'MIT',
       repository: 'https://github.com/expo/expo-simulator',
@@ -48,4 +49,4 @@ fs.writeFileSync(
   path.join(outDir, 'README.md'),
   `# @expo-sim/${key}\n\nPlatform binary for [expo-sim](https://www.npmjs.com/package/expo-sim). Install \`expo-sim\` instead of this package directly.\n`,
 );
-console.log(`Packaged npm/${key} (${version})`);
+console.log(`Packaged npm/${key} (${normalizedVersion})`);
