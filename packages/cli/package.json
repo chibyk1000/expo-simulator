@@ -1,5 +1,5 @@
 {
-  "name": "expo-sim",
+  "name": "@expo-sim/cli",
   "version": "0.1.0",
   "description": "Lightweight native desktop simulator for Expo and React Native apps",
   "license": "MIT",

@@ -91,7 +91,7 @@ git push --tags
 ```
 
 The workflow in `.github/workflows/release.yml` builds the binary on five platforms, publishes the
-`@expo-sim/<platform>-<arch>` packages and then `expo-sim` to npm, and attaches raw binaries to a GitHub release.
+`@expo-sim/<platform>-<arch>` packages and then `@expo-sim/cli` to npm, and attaches raw binaries to a GitHub release.
 It needs an `NPM_TOKEN` repository secret. `scripts/set-version.js` sets every version from the tag, so do not
 edit versions by hand.
 

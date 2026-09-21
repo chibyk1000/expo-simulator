@@ -52,6 +52,6 @@ fs.writeFileSync(
 );
 fs.writeFileSync(
   path.join(outDir, "README.md"),
-  `# @expo-sim/${key}\n\nPlatform binary for [expo-sim](https://www.npmjs.com/package/expo-sim). Install \`expo-sim\` instead of this package directly.\n`,
+  `# @expo-sim/${key}\n\nPlatform binary for [@expo-sim/cli](https://www.npmjs.com/package/@expo-sim/cli). Install \`@expo-sim/cli\` instead of this package directly.\n`,
 );
 console.log(`Packaged npm/${key} (${normalizedVersion})`);

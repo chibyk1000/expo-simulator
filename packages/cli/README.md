@@ -7,7 +7,7 @@ Lightweight native desktop simulator for Expo and React Native apps. No Android 
 Install it as a dev dependency in your Expo project:
 
 ```bash
-npm i -D expo-sim
+npm i -D @expo-sim/cli
 ```
 
 Add a script to your `package.json`:

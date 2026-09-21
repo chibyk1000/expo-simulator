@@ -18,7 +18,7 @@ Add it to your Expo project as a dev dependency. Requires **Node 18+**; the nati
 installed automatically.
 
 ```bash
-npm i -D expo-sim      # or: pnpm add -D expo-sim / yarn add -D expo-sim
+npm i -D @expo-sim/cli      # or: pnpm add -D @expo-sim/cli / yarn add -D @expo-sim/cli
 ```
 
 Then add a script to your `package.json`:
@@ -38,14 +38,14 @@ Supported platforms: Linux (x64, arm64), macOS (x64, arm64), Windows (x64).
 ## Usage
 
 ```bash
-npx expo start      # terminal 1: start Metro
-npm run sim         # terminal 2: open the simulator
+npx @expo-sim/cli start      # terminal 1: start Metro
+npm run sim                 # terminal 2: open the simulator
 ```
 
 If Metro is running on port 8081 the simulator connects to it. Otherwise it loads the app file in the
 folder you ran it from (`App.tsx`, `App.jsx`, `App.js`, or the same under `src/`) and reloads it on save.
 
-To try it once without installing, run `npx expo-sim` from your project folder.
+To try it once without installing, run `npx @expo-sim/cli` from your project folder.
 
 ### Commands
 
