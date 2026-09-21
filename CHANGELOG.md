@@ -8,6 +8,16 @@ New sections are generated automatically from commit messages when a release tag
 
 <!-- changelog:start -->
 
+## [0.1.3] - 2026-09-21
+
+### Fixed
+
+- update package names and references to use @expo-sim/cli (b8253ab)
+
+### Documentation
+
+- update contributing guidelines and README for improved clarity (8f38855)
+
 ## [0.1.0] - 2026-09-21
 
 ### Added
