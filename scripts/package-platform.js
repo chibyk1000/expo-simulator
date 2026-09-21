@@ -37,7 +37,10 @@ fs.writeFileSync(
       version: normalizedVersion,
       description: `Native ${key} binary for expo-sim`,
       license: "MIT",
-      repository: "https://github.com/expo/expo-simulator",
+      repository: {
+        type: "git",
+        url: "git+https://github.com/chibyk1000/expo-simulator.git",
+      },
       os: [os],
       cpu: [cpu],
       files: ["bin"],

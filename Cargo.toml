@@ -17,7 +17,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Expo Simulator Team"]
 license = "MIT"
-repository = "https://github.com/expo/expo-simulator"
+repository = "https://github.com/chibyk1000/expo-simulator"
 
 [workspace.dependencies]
 simulator-core = { path = "crates/simulator-core" }
