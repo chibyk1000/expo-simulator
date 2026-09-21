@@ -49,27 +49,27 @@ To try it once without installing, run `npx @expo-sim/cli` from your project fol
 
 ### Commands
 
-| Command | What it does |
-| --- | --- |
-| `expo-sim` / `expo-sim start` | Launch the simulator (default) |
-| `expo-sim devices` | List device profiles |
-| `expo-sim reload` | Trigger a reload |
-| `expo-sim screenshot [file]` | Save a screenshot (Linux only, needs `xwd` and `convert`) |
-| `expo-sim help` | Show help |
+| Command                       | What it does                                              |
+| ----------------------------- | --------------------------------------------------------- |
+| `expo-sim` / `expo-sim start` | Launch the simulator (default)                            |
+| `expo-sim devices`            | List device profiles                                      |
+| `expo-sim reload`             | Trigger a reload                                          |
+| `expo-sim screenshot [file]`  | Save a screenshot (Linux only, needs `xwd` and `convert`) |
+| `expo-sim help`               | Show help                                                 |
 
 ### Keyboard shortcuts
 
 Shortcuts that are plain letters only work while no text input is focused; with `Ctrl` they always work.
 
-| Keys | Action |
-| --- | --- |
-| `Ctrl+D` | Dev menu |
-| `Ctrl+R` / `r` | Reload |
-| `Ctrl+I` / `i` | Element inspector |
-| `Ctrl+O` / `o` | Rotate device |
-| `Ctrl+T` / `t` | Toggle light / dark |
-| `c`, `` ` `` or `F12` | Toggle console |
-| `Esc` | Close the console or dev menu |
+| Keys                  | Action                        |
+| --------------------- | ----------------------------- |
+| `Ctrl+D`              | Dev menu                      |
+| `Ctrl+R` / `r`        | Reload                        |
+| `Ctrl+I` / `i`        | Element inspector             |
+| `Ctrl+O` / `o`        | Rotate device                 |
+| `Ctrl+T` / `t`        | Toggle light / dark           |
+| `c`, `` ` `` or `F12` | Toggle console                |
+| `Esc`                 | Close the console or dev menu |
 
 ### Console
 
@@ -110,11 +110,11 @@ To add your own, create a `devices/` folder in your project with JSON files like
 
 ### Environment variables
 
-| Variable | Purpose |
-| --- | --- |
-| `EXPO_SIM_BIN` | Use this binary instead of the installed one |
-| `EXPO_SIM_CONSOLE` | `docked` or `detached`: open the console at launch |
-| `EXPO_SIM_TRANSPILE` | Path to `transpile.js` (set for you by the CLI) |
+| Variable             | Purpose                                            |
+| -------------------- | -------------------------------------------------- |
+| `EXPO_SIM_BIN`       | Use this binary instead of the installed one       |
+| `EXPO_SIM_CONSOLE`   | `docked` or `detached`: open the console at launch |
+| `EXPO_SIM_TRANSPILE` | Path to `transpile.js` (set for you by the CLI)    |
 
 ## Limitations
 

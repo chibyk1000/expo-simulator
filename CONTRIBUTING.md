@@ -28,23 +28,23 @@ pnpm expo-sim          # finds target/release/expo-sim automatically
 
 ## Repository layout
 
-| Path | What lives there |
-| --- | --- |
-| `crates/simulator-core` | Shared types: nodes, styles, geometry, colors |
-| `crates/simulator-device` | Device profiles and the device manager |
-| `crates/simulator-renderer` | Yoga layout and 2D drawing (`tiny-skia`, `cosmic-text`) |
-| `crates/simulator-input` | Mouse, scroll and keyboard translation |
-| `crates/simulator-runtime` | QuickJS engine and the Metro client |
-| `crates/simulator-bridge` | Message channel between JS and the host |
-| `crates/simulator-network`, `simulator-storage` | Simulated network conditions and storage |
-| `crates/simulator-desktop` | The window: device chrome, toolbar, console, event loop (`main.rs`) |
-| `packages/cli` | The published `expo-sim` launcher |
-| `packages/runtime` | JS shims and `transpile.js` (TSX to a bundle the engine can run) |
-| `packages/expo-simulator` | Shared TypeScript protocol types |
-| `devices/` | Built-in device profiles (embedded in the binary at compile time) |
-| `examples/expo-app` | Sample app used for development |
-| `scripts/` | Release helpers |
-| `docs/` | Architecture, rendering and runtime notes |
+| Path                                            | What lives there                                                    |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| `crates/simulator-core`                         | Shared types: nodes, styles, geometry, colors                       |
+| `crates/simulator-device`                       | Device profiles and the device manager                              |
+| `crates/simulator-renderer`                     | Yoga layout and 2D drawing (`tiny-skia`, `cosmic-text`)             |
+| `crates/simulator-input`                        | Mouse, scroll and keyboard translation                              |
+| `crates/simulator-runtime`                      | QuickJS engine and the Metro client                                 |
+| `crates/simulator-bridge`                       | Message channel between JS and the host                             |
+| `crates/simulator-network`, `simulator-storage` | Simulated network conditions and storage                            |
+| `crates/simulator-desktop`                      | The window: device chrome, toolbar, console, event loop (`main.rs`) |
+| `packages/cli`                                  | The published `expo-sim` launcher                                   |
+| `packages/runtime`                              | JS shims and `transpile.js` (TSX to a bundle the engine can run)    |
+| `packages/expo-simulator`                       | Shared TypeScript protocol types                                    |
+| `devices/`                                      | Built-in device profiles (embedded in the binary at compile time)   |
+| `examples/expo-app`                             | Sample app used for development                                     |
+| `scripts/`                                      | Release helpers                                                     |
+| `docs/`                                         | Architecture, rendering and runtime notes                           |
 
 Start with [docs/architecture.md](docs/architecture.md) for how the pieces connect.
 
@@ -121,15 +121,15 @@ docs: explain device profiles
 feat!: rename the cameraCutout field        <- "!" marks a breaking change
 ```
 
-| Prefix | Changelog section |
-| --- | --- |
-| `feat` | Added |
-| `fix` | Fixed |
-| `perf` | Performance |
-| `refactor`, `style`, `revert` | Changed |
-| `docs` | Documentation |
-| `build`, `ci`, `chore`, `test` | Maintenance |
-| anything else | Other |
+| Prefix                         | Changelog section |
+| ------------------------------ | ----------------- |
+| `feat`                         | Added             |
+| `fix`                          | Fixed             |
+| `perf`                         | Performance       |
+| `refactor`, `style`, `revert`  | Changed           |
+| `docs`                         | Documentation     |
+| `build`, `ci`, `chore`, `test` | Maintenance       |
+| anything else                  | Other             |
 
 Commits that do not follow the format still appear, under "Other".
 

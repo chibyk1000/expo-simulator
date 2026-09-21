@@ -1,31 +1,33 @@
 // Usage: node scripts/set-version.js <version>
 // Keeps the CLI package, its optionalDependencies, the Cargo workspace and VERSION.md in sync.
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const version = (process.argv[2] || '').replace(/^v/, '');
+const version = (process.argv[2] || "").replace(/^v/, "");
 if (!/^\d+\.\d+\.\d+(-[\w.]+)?$/.test(version)) {
-  console.error('Usage: set-version.js <x.y.z>');
+  console.error("Usage: set-version.js <x.y.z>");
   process.exit(1);
 }
 
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, "..");
 
-const cliPath = path.join(root, 'packages/cli/package.json');
-const cli = JSON.parse(fs.readFileSync(cliPath, 'utf8'));
+const cliPath = path.join(root, "packages/cli/package.json");
+const cli = JSON.parse(fs.readFileSync(cliPath, "utf8"));
 cli.version = version;
 for (const dep of Object.keys(cli.optionalDependencies || {})) {
   cli.optionalDependencies[dep] = version;
 }
-fs.writeFileSync(cliPath, JSON.stringify(cli, null, 2) + '\n');
+fs.writeFileSync(cliPath, JSON.stringify(cli, null, 2) + "\n");
 
-const cargoPath = path.join(root, 'Cargo.toml');
-const cargo = fs.readFileSync(cargoPath, 'utf8').replace(/^version = ".*"$/m, `version = "${version}"`);
+const cargoPath = path.join(root, "Cargo.toml");
+const cargo = fs
+  .readFileSync(cargoPath, "utf8")
+  .replace(/^version = ".*"$/m, `version = "${version}"`);
 fs.writeFileSync(cargoPath, cargo);
 
 const date = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(
-  path.join(root, 'VERSION.md'),
+  path.join(root, "VERSION.md"),
   `# Version
 
 **${version}**
