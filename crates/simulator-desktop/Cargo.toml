@@ -1,0 +1,30 @@
+[package]
+name = "simulator-desktop"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "expo-sim"
+path = "src/main.rs"
+
+[dependencies]
+simulator-core = { workspace = true }
+simulator-device = { workspace = true }
+simulator-bridge = { workspace = true }
+simulator-renderer = { workspace = true }
+simulator-input = { workspace = true }
+simulator-storage = { workspace = true }
+simulator-network = { workspace = true }
+simulator-runtime = { workspace = true }
+
+winit = { workspace = true }
+softbuffer = { workspace = true }
+tiny-skia = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+env_logger = { workspace = true }
+log = { workspace = true }
+anyhow = { workspace = true }

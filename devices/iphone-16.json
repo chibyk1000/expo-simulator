@@ -1,0 +1,14 @@
+{
+  "name": "iPhone 16",
+  "id": "iphone-16",
+  "platform": "ios",
+  "width": 1179,
+  "height": 2556,
+  "logicalWidth": 393,
+  "logicalHeight": 852,
+  "density": 3.0,
+  "fontScale": 1.0,
+  "safeArea": { "top": 59, "bottom": 34, "left": 0, "right": 0 },
+  "cornerRadius": 55,
+  "cameraCutout": { "type": "dynamic-island", "x": 196.5, "y": 30, "radius": 18 }
+}

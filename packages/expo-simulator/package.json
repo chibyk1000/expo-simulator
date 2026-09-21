@@ -1,0 +1,13 @@
+{
+  "name": "expo-simulator",
+  "version": "0.1.0",
+  "description": "Shared TypeScript definitions and utilities for Expo Simulator",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

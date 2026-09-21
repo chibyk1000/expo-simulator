@@ -1,0 +1,135 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    name: Build ${{ matrix.key }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { key: linux-x64,    os: ubuntu-24.04 }
+          - { key: linux-arm64,  os: ubuntu-24.04-arm }
+          - { key: darwin-x64,   os: macos-15-intel }
+          - { key: darwin-arm64, os: macos-latest }
+          - { key: win32-x64,    os: windows-latest }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set version from tag
+        run: node scripts/set-version.js "${GITHUB_REF_NAME}"
+
+      - name: Build binary
+        run: cargo build --release -p simulator-desktop
+
+      - name: Package platform module
+        shell: bash
+        run: |
+          BIN=target/release/expo-sim
+          [ "${{ runner.os }}" = "Windows" ] && BIN=target/release/expo-sim.exe
+          node scripts/package-platform.js "${{ matrix.key }}" "$BIN" "${GITHUB_REF_NAME#v}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-${{ matrix.key }}
+          path: npm/${{ matrix.key }}
+
+  publish:
+    name: Publish to npm
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: npm
+          pattern: npm-*
+          merge-multiple: false
+
+      - name: Normalise artifact folders
+        run: |
+          cd npm
+          for d in npm-*; do mv "$d" "${d#npm-}"; done
+          chmod +x */bin/expo-sim*
+
+      - name: Publish platform packages first
+        run: |
+          for d in npm/*/; do
+            npm publish "$d" --access public --provenance
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build and publish expo-sim
+        run: |
+          node scripts/set-version.js "${GITHUB_REF_NAME}"
+          pnpm install --frozen-lockfile=false
+          pnpm --filter expo-sim run build
+          cd packages/cli
+          npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Archive raw binaries for GitHub Releases
+        run: |
+          mkdir release
+          for d in npm/*/; do
+            k=$(basename "$d")
+            tar -czf "release/expo-sim-$k.tar.gz" -C "$d/bin" .
+          done
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release/*
+          generate_release_notes: true
+
+  record-release:
+    name: Update CHANGELOG.md and VERSION.md
+    needs: publish
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Update version files and changelog
+        run: |
+          git fetch --tags
+          node scripts/set-version.js "${GITHUB_REF_NAME}"
+          node scripts/update-changelog.js "${GITHUB_REF_NAME}"
+          cargo update --workspace
+
+      - name: Commit to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add VERSION.md CHANGELOG.md Cargo.toml Cargo.lock packages/cli/package.json
+          git diff --cached --quiet || git commit -m "chore(release): ${GITHUB_REF_NAME} [skip ci]"
+          git push origin main

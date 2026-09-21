@@ -1,0 +1,14 @@
+{
+  "name": "iPhone SE",
+  "id": "iphone-se",
+  "platform": "ios",
+  "width": 750,
+  "height": 1334,
+  "logicalWidth": 375,
+  "logicalHeight": 667,
+  "density": 2.0,
+  "fontScale": 1.0,
+  "safeArea": { "top": 20, "bottom": 0, "left": 0, "right": 0 },
+  "cornerRadius": 0,
+  "cameraCutout": null
+}

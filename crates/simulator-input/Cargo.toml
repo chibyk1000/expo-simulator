@@ -1,0 +1,16 @@
+[package]
+name = "simulator-input"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+simulator-core = { workspace = true }
+simulator-device = { workspace = true }
+simulator-bridge = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }

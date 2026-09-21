@@ -1,0 +1,24 @@
+{
+  "name": "Pixel 9 Pro",
+  "id": "pixel-9-pro",
+  "platform": "android",
+  "width": 1280,
+  "height": 2856,
+  "logicalWidth": 412,
+  "logicalHeight": 919,
+  "density": 3.1,
+  "fontScale": 1.0,
+  "safeArea": {
+    "top": 48,
+    "bottom": 36,
+    "left": 0,
+    "right": 0
+  },
+  "cornerRadius": 36,
+  "cameraCutout": {
+    "type": "punch-hole",
+    "x": 206,
+    "y": 22,
+    "radius": 15
+  }
+}

@@ -1,0 +1,47 @@
+[workspace]
+members = [
+    "crates/simulator-core",
+    "crates/simulator-device",
+    "crates/simulator-bridge",
+    "crates/simulator-renderer",
+    "crates/simulator-input",
+    "crates/simulator-storage",
+    "crates/simulator-network",
+    "crates/simulator-runtime",
+    "crates/simulator-desktop",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Expo Simulator Team"]
+license = "MIT"
+repository = "https://github.com/expo/expo-simulator"
+
+[workspace.dependencies]
+simulator-core = { path = "crates/simulator-core" }
+simulator-device = { path = "crates/simulator-device" }
+simulator-bridge = { path = "crates/simulator-bridge" }
+simulator-renderer = { path = "crates/simulator-renderer" }
+simulator-input = { path = "crates/simulator-input" }
+simulator-storage = { path = "crates/simulator-storage" }
+simulator-network = { path = "crates/simulator-network" }
+simulator-runtime = { path = "crates/simulator-runtime" }
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.40", features = ["full"] }
+thiserror = "2.0"
+anyhow = "1.0"
+log = "0.4"
+env_logger = "0.11"
+yoga = { version = "0.5.0", features = ["serde_support"] }
+tiny-skia = "0.12"
+cosmic-text = "0.19"
+winit = "0.30"
+softbuffer = "0.4"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tokio-tungstenite = "0.24"
+futures-util = "0.3"
+rquickjs = { version = "0.14.0", features = ["classes", "properties"] }

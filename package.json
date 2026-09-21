@@ -1,0 +1,19 @@
+{
+  "name": "expo-simulator-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lightweight Desktop Simulator for Expo and React Native",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "pnpm --filter \"./packages/**\" run build",
+    "sim": "cargo run -p simulator-desktop",
+    "expo-sim": "node packages/cli/bin/expo-sim.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "typescript": "^5.6.0"
+  }
+}

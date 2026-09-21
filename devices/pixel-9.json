@@ -1,0 +1,24 @@
+{
+  "name": "Pixel 9",
+  "id": "pixel-9",
+  "platform": "android",
+  "width": 1080,
+  "height": 2424,
+  "logicalWidth": 393,
+  "logicalHeight": 881,
+  "density": 2.75,
+  "fontScale": 1.0,
+  "safeArea": {
+    "top": 44,
+    "bottom": 34,
+    "left": 0,
+    "right": 0
+  },
+  "cornerRadius": 32,
+  "cameraCutout": {
+    "type": "punch-hole",
+    "x": 196.5,
+    "y": 20,
+    "radius": 14
+  }
+}

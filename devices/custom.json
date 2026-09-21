@@ -1,0 +1,19 @@
+{
+  "name": "Custom Device",
+  "id": "custom",
+  "platform": "android",
+  "width": 1080,
+  "height": 1920,
+  "logicalWidth": 360,
+  "logicalHeight": 640,
+  "density": 3.0,
+  "fontScale": 1.0,
+  "safeArea": {
+    "top": 24,
+    "bottom": 16,
+    "left": 0,
+    "right": 0
+  },
+  "cornerRadius": 16,
+  "cameraCutout": null
+}
